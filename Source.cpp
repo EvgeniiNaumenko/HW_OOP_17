@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 #include "Student.h"
+#include "Exept.h"
 
 int main()
 {
@@ -16,10 +17,18 @@ int main()
         // Write student to file
         file.open(file_name, ios::binary | ios::out);;
         cout << "-------------STUDENT 1 ----------------" << endl;
-        Student st{ "Alex","Kovalev", 18};
-        st.show();
-        st.serialize(file);
-        file.close();
+        try
+        {
+            Student st{ "Alex","Kovalev", 18};
+            st.show();
+            st.serialize(file);
+            file.close();
+        }
+        catch (const IncorrectValueException& ex)
+        {
+            cout << "ERROR: " << ex.what() << endl;
+        }
+
 
         // Read student from file
         file.open(file_name, ios::binary | ios::in);
