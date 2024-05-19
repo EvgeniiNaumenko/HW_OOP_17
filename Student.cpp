@@ -2,7 +2,15 @@
 
 Student::Student() :_name("NoName"), _surname("NOSurname"), _age(0) {}
 
-Student::Student(string name, string surname, int age) :_name(name), _surname(surname), _age(age) {}
+Student::Student(string name, string surname, int age) :_name(name), _surname(surname)
+{
+	if (age>=0)
+	{
+		_age = age;
+	}
+	else
+		throw IncorrectValueException("Incorrect value exception");
+}
 
 void Student::setName(string name)
 {
@@ -16,7 +24,14 @@ void Student::setSurname(string surname)
 
 void Student::setAge(int age)
 {
-	_age = age;
+	try
+	{
+		_age = age;
+	}
+	catch (const std::exception&)
+	{
+
+	}
 }
 
 void Student::show()

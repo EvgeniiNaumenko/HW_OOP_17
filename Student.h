@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Exept.h"
 using namespace std;
 
 class Student
